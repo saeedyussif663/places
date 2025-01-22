@@ -38,9 +38,10 @@ export default function Recommended() {
               alt="image"
               width={126}
               height={75}
+              style={{ width: 'auto', height: 'auto' }}
               className="rounded-[8px]"
             />
-            <div className="flex flex-col gap-2">
+            <div className="flex text-sm md:text-base flex-col gap-2">
               <h5>The Haus Cowork & Cafe</h5>
 
               <div className="flex items-center gap-2 text-[#929292]">

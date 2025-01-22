@@ -1,3 +1,4 @@
+import Footer from '@/components/footer';
 import Gradient from '@/components/gradient';
 import Main from '@/components/main';
 import Navbar from '@/components/navbar';
@@ -10,6 +11,7 @@ export default function Home() {
       <Gradient />
       <Main />
       <Recommended />
+      <Footer />
     </section>
   );
 }
