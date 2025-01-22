@@ -1,6 +1,7 @@
 import Gradient from '@/components/gradient';
 import Main from '@/components/main';
 import Navbar from '@/components/navbar';
+import Recommended from '@/components/recommended';
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Navbar />
       <Gradient />
       <Main />
+      <Recommended />
     </section>
   );
 }

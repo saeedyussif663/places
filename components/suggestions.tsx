@@ -14,7 +14,7 @@ export default function Suggestions() {
         {activities.map((activity, index) => (
           <div
             key={index}
-            className="bg-white/5 cursor-pointer rounded-[8px] py-1 px-2 text-white text-sm"
+            className="bg-white/5 text-center cursor-pointer rounded-[8px] py-1 px-2 text-white text-[8px] md:text-sm"
           >
             {activity}
           </div>
