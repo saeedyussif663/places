@@ -7,8 +7,9 @@ import {
   Star,
 } from '@phosphor-icons/react';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CarouselDemo } from './carousel';
+import { useGlobalContext } from '@/context/context';
 
 export default function Results() {
   const [isActive, setIsActive] = useState(true);
