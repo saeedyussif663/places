@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function Navbar() {
   return (
-    <nav className="h-[112px] flex justify-between items-center w-full sticky px-4 md:px-10">
+    <nav className="h-[112px] flex justify-between items-center w-full  px-4 md:px-10">
       <Image src={'/logo.png'} alt="logo" width={176} height={43} />
       <div className="flex items-center gap-2">
         <MapPinLine size={24} />
