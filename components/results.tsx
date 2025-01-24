@@ -61,7 +61,7 @@ export default function Results() {
               <p>40 Jungle Avenue</p>
             </div>
             <div className="flex items-center gap-2 text-[#929292]">
-              <ClockCountdown weight="fill" />
+              <ClockCountdown />
               <p>Open</p>
             </div>
           </div>

@@ -8,7 +8,7 @@ import ContextProvider from '@/context/context';
 export default function Home() {
   return (
     <ContextProvider>
-      <section className="min-h-screen pb-20  bg-[#1C1C1C] text-white font-inter">
+      <section className="min-h-screen  pb-20  bg-[#1C1C1C] text-white font-inter">
         <Navbar />
         <Gradient />
         <Main />

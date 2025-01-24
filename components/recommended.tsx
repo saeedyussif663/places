@@ -9,7 +9,7 @@ const tabs = ['Coworking spaces', 'Coffee Café', 'Restaurants'];
 export default function Recommended() {
   const [active, setActive] = useState('Coworking spaces');
   return (
-    <section className="mt-10 px-4 md:px-10">
+    <section className="mt-10 px-4 md:px-10 max-w-screen-2xl mx-auto">
       <div>
         <h5 className="text-2xl">Recommended places</h5>
         <div className="mt-4 flex items-center gap-2">
