@@ -1,21 +1,24 @@
 'use client';
 
+import { useGlobalContext } from '@/context/context';
 import {
   ArrowUpRight,
   ClockCountdown,
   MapPinLine,
   Star,
 } from '@phosphor-icons/react';
+import { Loader } from 'lucide-react';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 export default function Results() {
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(false);
+  const { loading } = useGlobalContext();
 
   return (
-    <section className="w-full p-3 md:w-[500px] flex items-center justify-center z-50  bg-[#1C1C1C] border rounded-[16px] border-[#ACFFF1]/10">
+    <section className="w-full p-3 min-h-[400px] md:w-[500px] flex items-center justify-center z-50  bg-[#1C1C1C] border rounded-[16px] border-[#ACFFF1]/10">
       {/* no content */}
-      {!isActive && (
+      {!isActive && !loading && (
         <div className="flex flex-col gap-5">
           <div className="px-10 py-6 flex justify-center items-center rounded-[16px]">
             <Image
@@ -31,6 +34,8 @@ export default function Results() {
           </p>
         </div>
       )}
+
+      {loading && <Loader size={30} className="animate-spin" />}
 
       {/* with content */}
       {isActive && (

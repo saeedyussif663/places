@@ -1,61 +1,69 @@
 'use client';
 
-import { CalendarDots, ClockCountdown } from '@phosphor-icons/react';
+import { useGlobalContext } from '@/context/context';
+import {
+  CalendarDots,
+  ClockCountdown,
+  Door,
+  MapPinLine,
+  Star,
+} from '@phosphor-icons/react';
 import Image from 'next/image';
-import { useState } from 'react';
-
-const tabs = ['Coworking spaces', 'Coffee Café', 'Restaurants'];
+import Link from 'next/link';
 
 export default function Recommended() {
-  const [active, setActive] = useState('Coworking spaces');
+  const { places } = useGlobalContext();
+
   return (
     <section className="mt-10 px-4 md:px-10 max-w-screen-2xl mx-auto">
-      <div>
-        <h5 className="text-2xl">Recommended places</h5>
-        <div className="mt-4 flex items-center gap-2">
-          {tabs.map((item, index) => (
-            <div
+      <h5 className="text-2xl">Recommended places</h5>
+
+      <div className="mt-[30px] flex flex-col  flex-wrap md:flex-row items-center gap-10">
+        {places.length === 0 ? (
+          <p className="text-[#B6B6B6]">search for your favorite place</p>
+        ) : (
+          places.map((item, index) => (
+            <Link
+              target="_blank"
+              href={item.directions_url}
               key={index}
-              className={`rounded-[4px] py-1 px-2 text-[8px] md:text-sm cursor-pointer ${
-                active === item && 'bg-white/5'
-              }`}
-              onClick={() => setActive(item)}
+              className="rounded-[16px] flex gap-4 bg-white/[0.05]  md:flex-col p-3 w-full md:w-[302px]"
             >
-              {item}
-            </div>
-          ))}
-        </div>
-      </div>
+              {item.photo_url ? (
+                <div className="relative w-full h-[200px]">
+                  <Image
+                    src={item.photo_url}
+                    alt="image"
+                    fill
+                    className="rounded-[8px]"
+                  />
+                </div>
+              ) : (
+                <p className="text-center text-[#929292] w-full h-[200px]">
+                  no image
+                </p>
+              )}
+              <div className="flex text-sm  md:text-base flex-col gap-2">
+                <h5 className="line-clamp-1">{item?.name}</h5>
 
-      <div className="mt-[30px] flex flex-col md:flex-row items-center gap-4">
-        {[0, 1, 3].map((item) => (
-          <div
-            key={item}
-            className="rounded-[16px] flex gap-4 bg-white/[0.05]  md:flex-col p-3 w-full md:w-[302px]"
-          >
-            <Image
-              src={'/placeholder.png'}
-              alt="image"
-              width={126}
-              height={75}
-              style={{ width: 'auto', height: 'auto' }}
-              className="rounded-[8px]"
-            />
-            <div className="flex text-sm md:text-base flex-col gap-2">
-              <h5>The Haus Cowork & Cafe</h5>
+                <div className="flex items-center gap-2 text-[#929292]">
+                  <Door size={18} />
+                  <p>{item.is_open_now ? 'open' : 'closed'}</p>
+                </div>
 
-              <div className="flex items-center gap-2 text-[#929292]">
-                <CalendarDots size={18} />
-                <p>Mondays - Sundays</p>
+                <div className="flex items-center gap-2 text-[#929292]">
+                  <MapPinLine size={18} />
+                  <p className="line-clamp-1">{item.address}</p>
+                </div>
+
+                <div className="flex items-center gap-2 text-[#929292]">
+                  <Star size={18} />
+                  <p className="line-clamp-1">{item.rating}</p>
+                </div>
               </div>
-
-              <div className="flex items-center gap-2 text-[#929292]">
-                <ClockCountdown size={18} />
-                <p>8:00AM - 9:00PM</p>
-              </div>
-            </div>
-          </div>
-        ))}
+            </Link>
+          ))
+        )}
       </div>
     </section>
   );

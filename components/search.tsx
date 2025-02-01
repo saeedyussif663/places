@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { Form, FormControl, FormField, FormItem, FormMessage } from './ui/form';
 import { Input } from './ui/input';
 import { MagnifyingGlass } from '@phosphor-icons/react';
-import Suggestions from './suggestions';
+import { useGlobalContext } from '@/context/context';
 
 const formSchema = z.object({
   activity: z
@@ -16,6 +16,8 @@ const formSchema = z.object({
 });
 
 export default function Search() {
+  const { fetchPlaces } = useGlobalContext();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -24,7 +26,8 @@ export default function Search() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    fetchPlaces(values.activity);
+    form.reset();
   }
 
   return (
@@ -43,18 +46,21 @@ export default function Search() {
                     className="outline-none border-0  rounded-none border-[#F5F5F5] pb-3 border-b ring-0 focus:ring-0 px-9 placeholder:text-[#A6A6A6]/50"
                   />
                 </FormControl>
-                <MagnifyingGlass
-                  size={20}
-                  className="absolute -top-1 cursor-pointer"
-                  color="#A6A6A6"
-                />
+                <button type="submit">
+                  {' '}
+                  <MagnifyingGlass
+                    size={20}
+                    className="absolute top-1 cursor-pointer"
+                    color="#A6A6A6"
+                  />
+                </button>
+
                 <FormMessage />
               </FormItem>
             )}
           />
         </form>
       </Form>
-      <Suggestions />
     </div>
   );
 }
