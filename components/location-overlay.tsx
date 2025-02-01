@@ -2,7 +2,6 @@
 
 import { useGlobalContext } from '@/context/context';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 
 export default function Locationoverlay() {
   const { showLocationOverlay, setShowLocationOverlay, setLocation } =
@@ -12,20 +11,33 @@ export default function Locationoverlay() {
     setShowLocationOverlay(false);
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(
-        (position) => {
+        async (position) => {
+          const res = await fetch(
+            `https://us1.locationiq.com/v1/reverse?key=pk.fd80d16f37a4abd1f0c95a022752918b&lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json&`
+          );
+
+          if (!res.ok) {
+            throw new Error();
+          }
+
+          const data = await res.json();
+
           setLocation({
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
+            town: data.address.town,
           });
         },
-        (error) => alert('an error occured getting your location')
+        (error) => {
+          console.log(error), alert('an error occured getting your location');
+        }
       );
     }
   }
 
   return (
     <section
-      className={`h-screen pt-6 md:pt-32 w-screen bg-[#1c1c1c]/80 backdrop-blur-sm fixed top-0 z-[100] ${
+      className={`h-screen pt-6 w-screen bg-[#1c1c1c]/80 backdrop-blur-sm fixed top-0 z-[100] ${
         showLocationOverlay ? 'flex' : 'hidden'
       } flex justify-center`}
     >

@@ -8,8 +8,6 @@ import {
 } from '@phosphor-icons/react';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import { CarouselDemo } from './carousel';
-import { useGlobalContext } from '@/context/context';
 
 export default function Results() {
   const [isActive, setIsActive] = useState(true);
@@ -38,7 +36,14 @@ export default function Results() {
       {isActive && (
         <div className="flex flex-col gap-4 justify-between">
           {/* image */}
-          <CarouselDemo />
+          <div className="relative h-[230px]">
+            <Image
+              src={'/placeholder.png'}
+              alt="placeholder"
+              fill
+              className="rounded-lg"
+            />
+          </div>
 
           {/* text */}
 

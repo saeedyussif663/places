@@ -2,19 +2,23 @@
 
 import { createContext, useContext, useEffect, useState } from 'react';
 
-type Location = { longitude: null | number; latitude: null | number };
+type Location = {
+  longitude: null | number;
+  latitude: null | number;
+  town: string;
+};
 
 type AppContextType = {
   showLocationOverlay: boolean;
   setShowLocationOverlay: React.Dispatch<React.SetStateAction<boolean>>;
-  location: { longitude: null | number; latitude: null | number };
+  location: Location;
   setLocation: React.Dispatch<React.SetStateAction<Location>>;
 };
 
 const AppContext = createContext<AppContextType>({
   showLocationOverlay: false,
   setShowLocationOverlay: () => {},
-  location: { longitude: null, latitude: null },
+  location: { longitude: null, latitude: null, town: '' },
   setLocation: () => {},
 });
 
@@ -27,6 +31,7 @@ export default function ContextProvider({
   const [location, setLocation] = useState<Location>({
     latitude: null,
     longitude: null,
+    town: '',
   });
 
   useEffect(() => {
