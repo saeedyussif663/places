@@ -39,25 +39,25 @@ export default function Recommended() {
                   />
                 </div>
               ) : (
-                <p className="text-center text-[#929292] w-full h-[200px]">
+                <div className="flex items-center justify-center text-[#929292] w-full h-[200px]">
                   no image
-                </p>
+                </div>
               )}
               <div className="flex text-sm  md:text-base flex-col gap-2">
-                <h5 className="line-clamp-1">{item?.name}</h5>
+                <h5 className="line-clamp-1">{item.name}</h5>
 
                 <div className="flex items-center gap-2 text-[#929292]">
-                  <Door size={18} />
+                  <Door size={18} className="flex-shrink-0" />
                   <p>{item.is_open_now ? 'open' : 'closed'}</p>
                 </div>
 
                 <div className="flex items-center gap-2 text-[#929292]">
-                  <MapPinLine size={18} />
+                  <MapPinLine size={18} className="flex-shrink-0" />
                   <p className="line-clamp-1">{item.address}</p>
                 </div>
 
                 <div className="flex items-center gap-2 text-[#929292]">
-                  <Star size={18} />
+                  <Star size={18} className="flex-shrink-0" />
                   <p className="line-clamp-1">{item.rating}</p>
                 </div>
               </div>

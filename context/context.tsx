@@ -54,6 +54,11 @@ export default function ContextProvider({
   const [places, setPlaces] = useState([]);
 
   async function fetchPlaces(activity: string) {
+    if (!location.latitude || !location.longitude) {
+      setShowLocationOverlay(true);
+      return;
+    }
+
     setLoading(true);
     try {
       const res = await fetch(
@@ -67,7 +72,6 @@ export default function ContextProvider({
       const data = await res.json();
       if (data.places.length > 8) {
         const elements = data.places.slice(0, 8);
-        console.log(elements);
         setPlaces(elements);
       } else {
         setPlaces(data.places);
