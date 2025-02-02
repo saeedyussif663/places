@@ -8,7 +8,7 @@ export default function Navbar() {
   const { location } = useGlobalContext();
 
   return (
-    <nav className="h-[112px] max-w-screen-2xl mx-auto flex justify-between items-center w-full  px-4 md:px-10">
+    <nav className="h-[112px] max-w-screen-xl mx-auto flex justify-between items-center w-full  px-4 md:px-10">
       <Image src={'/logo.png'} alt="logo" width={176} height={43} />
       <div className="flex items-center gap-2">
         <MapPinLine size={24} />

@@ -15,7 +15,7 @@ export default function Recommended() {
   const { places } = useGlobalContext();
 
   return (
-    <section className="mt-10 px-4 md:px-10 max-w-screen-2xl mx-auto">
+    <section className="mt-10 px-4 md:px-10 max-w-screen-xl mx-auto">
       <h5 className="text-2xl">Recommended places</h5>
 
       <div className="mt-[30px] flex flex-col  flex-wrap md:flex-row items-center gap-10">

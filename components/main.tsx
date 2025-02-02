@@ -3,7 +3,7 @@ import Search from './search';
 
 export default function Main() {
   return (
-    <section className="mt-10 max-w-screen-2xl mx-auto flex gap-8  text-white flex-col md:flex-row justify-between items-center px-4 md:px-10">
+    <section className="mt-10 max-w-screen-xl mx-auto flex gap-8  text-white flex-col md:flex-row justify-between items-center px-4 md:px-10">
       <section className="w-full md:w-[561px] flex flex-col gap-8">
         <div>
           <h1 className="font-semibold text-xl md:text-5xl">
