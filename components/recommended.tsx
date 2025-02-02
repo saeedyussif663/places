@@ -27,7 +27,7 @@ export default function Recommended() {
               target="_blank"
               href={item.directions_url}
               key={index}
-              className="rounded-[16px] flex gap-4 bg-white/[0.05]  md:flex-col p-3 w-full md:w-[302px]"
+              className="rounded-[16px] flex flex-col  gap-4 bg-white/[0.05]    p-3 w-full md:w-[302px]"
             >
               {item.photo_url ? (
                 <div className="relative w-full h-[200px]">
