@@ -8,18 +8,24 @@ import {
   MapPinLine,
   Star,
 } from '@phosphor-icons/react';
+import { Loader } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Recommended() {
-  const { places } = useGlobalContext();
+  const { places, loading } = useGlobalContext();
 
   return (
     <section className="mt-10 px-4 md:px-10 max-w-screen-xl mx-auto">
       <h5 className="text-2xl">Recommended places</h5>
 
       <div className="mt-[30px] flex flex-col  flex-wrap md:flex-row items-center gap-10">
-        {places.length === 0 ? (
+        {loading && (
+          <div className="w-full">
+            <Loader className="mx-auto animate-spin" />
+          </div>
+        )}
+        {places.length === 0 && !loading ? (
           <p className="text-[#B6B6B6]">search for your favorite place</p>
         ) : (
           places.map((item, index) => (
