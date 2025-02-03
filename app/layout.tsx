@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: [{ url: '/default.jpg' }],
+    images: [{ url: '/default.png' }],
   },
   openGraph: {
     title: 'Places',
@@ -27,18 +27,18 @@ export const metadata: Metadata = {
     siteName: 'Places',
     images: [
       {
-        url: '/default.jpg',
+        url: '/default.png',
         width: 400,
         height: 200,
         alt: 'Places',
       },
       {
-        url: '/default.jpg',
+        url: '/default.png',
         width: 800,
         height: 600,
       },
       {
-        url: '/default.jpg',
+        url: '/default.png',
         width: 1800,
         height: 1600,
         alt: 'Places',
