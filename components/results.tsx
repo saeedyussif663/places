@@ -13,7 +13,6 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 
 export default function Results() {
-  const [isActive, setIsActive] = useState(true);
   const { loading, places } = useGlobalContext();
 
   const highestRatedPlace = places.reduce(

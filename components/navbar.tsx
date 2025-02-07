@@ -9,7 +9,7 @@ export default function Navbar() {
 
   return (
     <nav className="h-[112px] max-w-screen-xl mx-auto flex justify-between items-center w-full  px-4 md:px-10">
-      <Image src={'/logo.png'} alt="logo" width={176} height={43} />
+      <Image src={'/logo.png'} alt="logo" width={143} height={43} />
       <div className="flex items-center gap-2">
         <MapPinLine size={24} />
         <p className="font-medium text-sm md:text-xl text-[#D7D7D7]">
